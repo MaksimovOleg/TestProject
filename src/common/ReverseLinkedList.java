@@ -11,31 +11,27 @@ public class ReverseLinkedList {
         ListNode third = new ListNode(3);
         ListNode second = new ListNode(2, third);
         ListNode first = new ListNode(1, second);
+        ListNode head = new ListNode();
+//        ---------------------------------------------------------------------------------
 
+        ListNode current = head.next;
+        ListNode next = null;
+        ListNode reverse = new ListNode(head.val);
+        if (head == null) {
+            return null;
+        }
 
-//        Stack<ListNode> stack = new Stack<>();
-//        if (Objects.isNull(first)) {
-//            return first;
-//        }
-//        ListNode currentElement = first;
-//        while (Objects.nonNull(currentElement)) {
-//            stack.push(first);
-//            currentElement = currentElement.next;
-//        }
-//        ListNode node = stack.pop();
-//        ListNode next;
-//        while (stack.size()>0){
-//        }
-        return null;
+        while (current !=null && current.next != null) {
+            next = current.next;
+            reverse = new ListNode(current.val, reverse);
+            current = next;
+        }
+        if (current != null) {
+            reverse = new ListNode(current.val, reverse);
+        }
+        return reverse;
     }
 
-//    private static ListNode get(ListNode node) {
-//        if (node.next==null) {
-//            return node;
-//        } else {
-//            get(node);
-//        }
-//    }
 
     static class ListNode {
       int val;
